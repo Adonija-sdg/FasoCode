@@ -20,7 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 const db = mysql.createConnection({
   host: "173.212.213.214",
   user: "root",
-  password: "CCzt94MAT3ZP8joGzS8hR4G4uTbJLxPENZDvAlOW604t9cwy4ghUQzIbnNHS7EYW",
+  password: "21hIbb04OJwXl8BlljvUjjVZHVpsc6U0149Vocw5SuBpmEk3q5zymw5yjN9CdAVM",
   database: "fasocode-X",
   port: 3306,
 });
