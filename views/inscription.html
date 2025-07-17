@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Inscription - FasoCode</title>
+</head>
+<body>
+  <h2>Créer un compte</h2>
+  <form action="http://localhost:3000/inscription" method="POST">
+    <label for="nom">Nom :</label><br>
+    <input type="text" id="nom" name="nom" required><br><br>
+
+    <label for="email">Email :</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="password">Mot de passe :</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <label for="role">Rôle :</label><br>
+    <select name="role" id="role">
+      <option value="utilisateur">Utilisateur</option>
+      <option value="admin">Admin</option>
+    </select><br><br>
+
+    <input type="submit" value="S'inscrire">
+  </form>
+</body>
+</html>

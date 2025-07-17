@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inscription - Module Court | FasoCode-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+  <style>
+   body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* dégradé bleu clair très doux */
+  margin: 0;
+  padding: 30px;
+  min-height: 100vh;
+  color: #333; /* texte en gris foncé pour meilleur contraste */
+}
+
+
+    .form-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2B9348;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    h3 {
+      border-bottom: 2px solid #2B9348;
+      padding-bottom: 5px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      color: #2B9348;
+      font-weight: 600;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .radio-group,
+    .checkbox-group {
+      margin-top: 8px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .radio-group label,
+    .checkbox-group label {
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .file-input {
+      margin-top: 10px;
+    }
+
+    .form-actions {
+      margin-top: 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    button {
+      background-color: #2B9348;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1em;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgb(43 147 72 / 0.5);
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #238636;
+    }
+
+    button.reset-btn {
+      background-color: #aaa;
+      box-shadow: none;
+      font-weight: 600;
+    }
+
+    button.reset-btn:hover {
+      background-color: #888;
+    }
+
+    .copy-mail {
+      font-size: 0.9em;
+      color: #555;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .copy-mail:hover {
+      color: #2B9348;
+      text-decoration: underline;
+    }
+
+    /* Checkbox engagement */
+    .engagement label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+    
+
+<div class="form-container">
+  <div class="logo-container" style="text-align:center; margin-bottom: 20px;">
+    <img src="/images/logo.png" alt="Logo FasoCode-X" style="height: 80px; width: auto;">
+  </div>
+  <h2>Inscription - Module Court</h2>
+
+  <form action="/formations/modules-courts/submit" method="POST" enctype="multipart/form-data">
+
+    <!-- Informations personnelles -->
+    <h3>Informations personnelles</h3>
+
+    <label for="nom">Nom complet *</label>
+    <input type="text" id="nom" name="nom" required />
+
+    <label>Sexe *</label>
+    <div class="radio-group">
+      <label><input type="radio" name="sexe" value="Masculin" required /> Masculin</label>
+      <label><input type="radio" name="sexe" value="Féminin" /> Féminin</label>
+      <label><input type="radio" name="sexe" value="Autre" /> Autre</label>
+    </div>
+
+    <label for="date_naissance">Date de naissance *</label>
+    <input type="date" id="date_naissance" name="date_naissance" required />
+
+    <label for="nationalite">Nationalité *</label>
+    <input type="text" id="nationalite" name="nationalite" required />
+
+    <label for="pays_residence">Pays de résidence *</label>
+    <input type="text" id="pays_residence" name="pays_residence" required />
+
+    <!-- Coordonnées -->
+    <h3>📞 Coordonnées</h3>
+
+    <label for="telephone">Téléphone (WhatsApp) *</label>
+    <input type="tel" id="telephone" name="telephone" required />
+
+    <label for="email">Adresse e-mail *</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="adresse_complete">Adresse complète *</label>
+    <input type="text" id="adresse_complete" name="adresse_complete" required />
+
+    <!-- Formation choisie -->
+    <h3>🎓 Formation choisie</h3>
+
+    <label>Choisissez une formation *</label>
+    <div class="radio-group">
+      <label><input type="radio" name="formation_choisie" value="AI & Deep Learning" required /> AI & Deep Learning</label>
+      <label><input type="radio" name="formation_choisie" value="Cybersecurity & Defense" /> Cybersecurity & Defense</label>
+      <label><input type="radio" name="formation_choisie" value="Cloud & DevOps" /> Cloud & DevOps</label>
+      <label>
+        <input type="radio" name="formation_choisie" value="Autre" /> Autre :
+        <input type="text" name="formation_autre" placeholder="Précisez ici" style="width:150px; margin-left:8px;" />
+      </label>
+    </div>
+
+    <label>Niveau d’études actuel *</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="niveau_etudes" value="Licence" required /> Licence</label>
+      <label><input type="checkbox" name="niveau_etudes" value="Master" /> Master</label>
+      <label>
+        <input type="checkbox" name="niveau_etudes" value="Autre" /> Autre :
+        <input type="text" name="niveau_etudes_autre" placeholder="Précisez ici" style="width:150px; margin-left:8px;" />
+      </label>
+    </div>
+
+    <label>Expérience en informatique *</label>
+    <div class="radio-group">
+      <label><input type="radio" name="experience_info" value="Débutant" required /> Débutant</label>
+      <label><input type="radio" name="experience_info" value="Intermédiaire" /> Intermédiaire</label>
+      <label><input type="radio" name="experience_info" value="Avancé" /> Avancé</label>
+    </div>
+
+    <!-- Pièces à fournir -->
+    <h3>📁 Pièces à fournir (formats PDF ou image)</h3>
+    <label for="piece_identite">📄 Carte d’identité ou Passeport *</label>
+    <input type="file" id="piece_identite" name="piece_identite" accept=".pdf,image/*" required class="file-input" />
+
+    <label for="diplome">🪪 Diplôme ou attestation de niveau *</label>
+    <input type="file" id="diplome" name="diplome" accept=".pdf,image/*" required class="file-input" />
+
+    <label for="photo_identite">🖼 Photo d’identité *</label>
+    <input type="file" id="photo_identite" name="photo_identite" accept="image/*" required class="file-input" />
+
+    <!-- Langue de formation préférée -->
+    <h3>🌍 Langue de formation préférée</h3>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="langue_formation" value="Français" /> Français</label>
+      <label><input type="checkbox" name="langue_formation" value="Anglais" /> Anglais</label>
+      <label><input type="checkbox" name="langue_formation" value="Bilingue" /> Bilingue</label>
+    </div>
+
+    <!-- Motivation -->
+    <h3>📝 Motivation</h3>
+
+    <label for="motivation1">Pourquoi souhaitez-vous rejoindre FasoCode-X ? *</label>
+    <textarea id="motivation1" name="motivation1" required></textarea>
+
+    <label for="motivation2">Quels sont vos objectifs après la formation ? *</label>
+    <textarea id="motivation2" name="motivation2" required></textarea>
+
+    <!-- Engagement -->
+    <h3>✅ Engagement</h3>
+    <div class="engagement">
+      <label><input type="checkbox" name="certification" required /> Je certifie que les informations fournies sont exactes.</label>
+      <label><input type="checkbox" name="conditions" required /> J’accepte les conditions générales de formation de FasoCode-X.</label>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <button type="reset" class="reset-btn"><i class="fa fa-rotate-left"></i> Réinitialiser</button>
+      <button type="submit"><i class="fa fa-paper-plane"></i> S’inscrire maintenant</button>
+    </div>
+
+    <div style="margin-top:15px; text-align:center;">
+      <span class="copy-mail" onclick="copyEmail()">📧 Recevoir une copie de ma demande par e-mail (sera envoyé automatiquement après soumission)</span>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  // Fonction copier email (placeholder)
+  function copyEmail() {
+    alert("Cette fonctionnalité sera ajoutée bientôt !");
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inscription - Parcours Professionnel | FasoCode-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #4a90e2, #a3c1f5);
+      margin: 0;
+      padding: 30px;
+      min-height: 100vh;
+    }
+    .form-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    /* Logo en haut */
+    .logo {
+      position: absolute;
+      top: -60px;
+      left: 20px;
+      width: 120px;
+      height: auto;
+    }
+    h2 {
+      text-align: center;
+      color: #2b9348;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #444;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+    textarea {
+      resize: vertical;
+    }
+    .form-actions {
+      text-align: center;
+      margin-top: 25px;
+    }
+    button {
+      background-color: #2b9348;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #238636;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <!-- Logo FasoCode-X -->
+  <div class="logo-container" style="text-align:center; margin-bottom: 20px;">
+    <img src="/images/logo.png" alt="Logo FasoCode-X" style="height: 80px; width: auto;">
+  </div>
+  
+  <h2>Inscription - Parcours Professionnel</h2>
+  
+  <form action="/formations/parcours-pro/submit" method="POST">
+    <label for="nom">Nom complet</label>
+    <input type="text" id="nom" name="nom" required />
+
+    <label for="email">Adresse email</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="telephone">Téléphone</label>
+    <input type="tel" id="telephone" name="telephone" required />
+
+    <label for="domaine">Domaine de spécialisation</label>
+    <select id="domaine" name="domaine" required>
+      <option value="">-- Sélectionnez un domaine --</option>
+      <option value="Cloud & DevOps">Cloud & DevOps</option>
+      <option value="IA & Deep Learning">IA & Deep Learning</option>
+      <option value="Cybersécurité & Défense">Cybersécurité & Défense</option>
+      <option value="Autre">Autre</option>
+    </select>
+
+    <label for="niveau">Niveau actuel</label>
+    <select id="niveau" name="niveau" required>
+      <option value="">-- Sélectionnez votre niveau --</option>
+      <option value="Licence">Licence</option>
+      <option value="Master">Master</option>
+      <option value="Autre">Autre</option>
+    </select>
+
+    <label for="experience">Expérience en informatique</label>
+    <select id="experience" name="experience" required>
+      <option value="">-- Choisissez votre expérience --</option>
+      <option value="Débutant">Débutant</option>
+      <option value="Intermédiaire">Intermédiaire</option>
+      <option value="Avancé">Avancé</option>
+    </select>
+
+    <label for="commentaire">Commentaire (facultatif)</label>
+    <textarea id="commentaire" name="commentaire" rows="4"></textarea>
+
+    <div class="form-actions">
+      <button type="submit"><i class="fa fa-paper-plane"></i> Envoyer</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

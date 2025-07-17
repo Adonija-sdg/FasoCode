@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tableau de bord - FasoCode-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+  <style>
+    /* ==== ANIMATION DEGRADÉ ==== */
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding-top: 70px;
+    }
+
+    /* ==== ENTÊTE FIXE AVEC ANIMATION ==== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 60px;
+      background: linear-gradient(-45deg, #2B9348, #55A630, #80B918, #2B9348);
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+ .logo {
+  display: flex;
+  align-items: center;
+  height: 100%; /* occupe toute la hauteur du header */
+}
+
+.logo img {
+  height: 60px;  /* taille assez grande */
+  width: auto;
+  display: block;
+}
+
+    .profile-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .profile-menu button {
+      font-size: 0.95em;
+      background-color: #ffffff22;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .profile-options {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      margin-top: 8px;
+      background-color: white;
+      color: #333;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      z-index: 9999;
+      min-width: 150px;
+    }
+
+    .profile-options a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #333;
+      font-size: 0.9em;
+    }
+
+    .profile-options a:hover {
+      background: #f1f1f1;
+    }
+
+    .flash-message {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 15px;
+      margin: 20px auto;
+      border: 1px solid #c3e6cb;
+      border-radius: 8px;
+      max-width: 800px;
+      text-align: center;
+      display: none;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      color: #D62828;
+      font-size: 1.8em;
+    }
+
+    /* ==== BLOC FORMATIONS (STYLE MODERNE) ==== */
+    .formations {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 40px auto;
+      padding: 0 20px;
+      max-width: 1100px;
+    }
+
+    .formation-card {
+      background: linear-gradient(145deg, #ffffff, #f2f2f2);
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 300px;
+      padding: 25px 20px;
+    }
+
+    .formation-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    }
+
+    .formation-card h3 {
+      color: #2B9348;
+      margin-bottom: 10px;
+    }
+
+    .formation-card p {
+      font-size: 0.95em;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .formation-card button {
+      background-color: #2B9348;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .formation-card button:hover {
+      background-color: #238636;
+    }
+
+    .details-section {
+      max-width: 1000px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .details-section h3 {
+      color: #2B9348;
+      margin-bottom: 10px;
+    }
+
+    .details-section ul {
+      margin-top: 5px;
+      padding-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 40px 0;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ENTÊTE --> 
+<header>
+  <div class="logo">
+    <img src="/images/logo.png" alt="Logo FasoCode-X" />
+  </div>
+  <div class="profile-menu">
+    <button onclick="toggleMenu()">👤 Mon profil <i class="fa fa-caret-down"></i></button>
+    <div class="profile-options">
+      <a href="#"><i class="fa fa-user"></i> Voir profil</a>
+      <a href="#"><i class="fa fa-cog"></i> Paramètres</a>
+      <a href="/login"><i class="fa fa-sign-out-alt"></i> Déconnexion</a>
+    </div>
+  </div>
+</header>
+
+
+
+<!-- FLASH MESSAGE -->
+<div class="flash-message" id="flash">✅ Vous êtes connecté avec succès !</div>
+
+<h2>Nos Formations Disponibles</h2>
+
+<!-- BLOCS DE FORMATION -->
+<div class="formations">
+  <div class="formation-card">
+    <h3>📘 Modules Courts</h3>
+    <p>Formations intensives de 2 à 3 mois sur une technologie ou compétence précise.</p>
+   <form action="/formations/modules-courts" method="GET">
+  <button type="submit">S’inscrire</button>
+</form>
+  </div>
+
+  <div class="formation-card">
+  <h3>🎓 Parcours Professionnels</h3>
+  <p>Programmes certifiants de 6 à 12 mois pour devenir expert dans un domaine.</p>
+  <form action="/formations/parcours-pro" method="GET">
+    <button type="submit">S’inscrire</button>
+  </form>
+</div>
+
+<div class="formation-card">
+  <h3>🚀 Préparation à l’Emploi</h3>
+  <p>Coaching intensif pour CV, entretiens, anglais, télétravail, et soft skills.</p>
+  <form action="/formations/prepar-emploi" method="GET">
+    <button type="submit">S’inscrire</button>
+  </form>
+</div>
+
+</div>
+
+<!-- DÉTAILS FORMATIONS -->
+<div class="details-section">
+  <h3>🌐 Domaines de formation</h3>
+  <ul>
+    <li>Cloud & DevOps : AWS, Azure, Docker, Kubernetes</li>
+    <li>Programmation : Python, Java, JavaScript</li>
+    <li>IA & Data Science : GenAI, TensorFlow, IBM DS</li>
+    <li>Cybersécurité : CEH, Security+, Network+</li>
+  </ul>
+
+  <h3>📜 Certifications possibles</h3>
+  <ul>
+    <li>AWS Solutions Architect</li>
+    <li>Azure Administrator</li>
+    <li>PCAP Python, ISTQB Tester</li>
+    <li>CompTIA Security+, CEH Hacker</li>
+    <li>IBM Data Science, TensorFlow, SAP ERP</li>
+  </ul>
+
+  <h3>🤝 Partenaires de certification</h3>
+  <ul>
+    <li>AWS</li>
+    <li>Microsoft</li>
+    <li>ISTQB</li>
+  </ul>
+
+  <h3>🧑‍🏫 Typologie des formateurs</h3>
+  <ul>
+    <li>Instructeurs à plein temps (Python, DevOps, etc.)</li>
+    <li>Experts de l’industrie (AI, ML, Cyber)</li>
+    <li>Formateurs locaux (avec universités, communautés tech)</li>
+    <li>Formateurs internationaux (Zoom/présentiel pour certif)</li>
+  </ul>
+</div>
+
+<footer>
+  &copy; 2025 FasoCode-X. Tous droits réservés.
+</footer>
+
+<script>
+  // Message flash temporaire
+  const flash = document.getElementById("flash");
+  if (flash) {
+    flash.style.display = "block";
+    setTimeout(() => {
+      flash.style.display = "none";
+    }, 4000);
+  }
+
+  // Menu profil déroulant
+  function toggleMenu() {
+    const menu = document.querySelector(".profile-options");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  window.addEventListener("click", function(event) {
+    const button = document.querySelector(".profile-menu button");
+    const menu = document.querySelector(".profile-options");
+    if (!button.contains(event.target) && !menu.contains(event.target)) {
+      menu.style.display = "none";
+    }
+  });
+</script>
+
+</body>
+</html>
