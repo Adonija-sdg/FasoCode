@@ -18,9 +18,9 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Connexion à la BD
 const db = mysql.createConnection({
-  host: "localhost",
+  host: "173.212.213.214",
   user: "root",
-  password: "",
+  password: "21hIbb04OJwXl8BlljvUjjVZHVpsc6U0149Vocw5SuBpmEk3q5zymw5yjN9CdAVM",
   database: "fasocode-X",
   port: 3306,
 });
